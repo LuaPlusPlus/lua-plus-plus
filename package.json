@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/OGL-Development/lua-plus-plus#readme",
   "dependencies": {
+    "antlr4": "^4.8.0",
     "pegjs": "^0.10.0"
   }
 }
