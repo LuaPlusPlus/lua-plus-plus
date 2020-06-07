@@ -5,11 +5,14 @@ class animal
     end
 
     function getname()
-        return this.name
+        return self.name
     end
 
     function setname(name)
-        this.name = name
+        self.name = name
     end
 
 end
+local b = new animal()
+b:setname("Test")
+print(b:getname())
