@@ -1,0 +1,22 @@
+{
+  "name": "lua-plus-plus",
+  "version": "1.0.0",
+  "description": "Lua Plus Plus, made to implement Classes and a few other things.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OGL-Development/lua-plus-plus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OGL-Development/lua-plus-plus/issues"
+  },
+  "homepage": "https://github.com/OGL-Development/lua-plus-plus#readme",
+  "dependencies": {
+    "pegjs": "^0.10.0"
+  }
+}
