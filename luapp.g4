@@ -106,30 +106,6 @@ functiondef
     : 'function' funcbody
     ;
 
-classdef
-    : 'class' classbody
-    ;
-
-classbody
-    :  functiondef* 'end'
-    ;
-
-addOne
-    : '++'
-    ;
-
-minusOne
-    : '--'
-    ;
-
-multiplyEqual
-    : '*='
-    ;
-
-divEqual
-    : '/='
-    ;
-
 funcbody
     : '(' parlist? ')' block 'end'
     ;
@@ -188,6 +164,35 @@ number
 string
     : NORMALSTRING | CHARSTRING | LONGSTRING
     ;
+
+// Plus-Plus Modifications
+
+classdef
+    : 'class' classbody
+    ;
+
+classbody
+    :  functiondef* 'end'
+    ;
+
+addOne
+    : '++'
+    ;
+
+plusEqual
+    : '+='
+    ;
+
+multiplyEqual
+    : '*='
+    ;
+
+divEqual
+    : '/='
+    ;
+
+
+//////////////////////////////////////////
 
 // LEXER
 
