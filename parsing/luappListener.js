@@ -74,6 +74,15 @@ luappListener.prototype.exitClassname = function(ctx) {
 };
 
 
+// Enter a parse tree produced by luappParser#abstractclassname.
+luappListener.prototype.enterAbstractclassname = function(ctx) {
+};
+
+// Exit a parse tree produced by luappParser#abstractclassname.
+luappListener.prototype.exitAbstractclassname = function(ctx) {
+};
+
+
 // Enter a parse tree produced by luappParser#varlist.
 luappListener.prototype.enterVarlist = function(ctx) {
 };

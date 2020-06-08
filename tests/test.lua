@@ -20,6 +20,8 @@ function animal.new(name)
     local self = {}
     setmetatable(self, animal)
     self.name = name
+    
+
     return self
 end
         
@@ -29,7 +31,36 @@ end
             print("that's a long name!")
         end
     end
+cat = {}
+cat.__index = cat
+        
+function cat:getName()
+    return self.name 
+end
+    
+function cat:setName(obj)
+    self.name = obj 
+end
+    
+ 
+function cat.new(name)
+    local self = {}
+    setmetatable(self, cat)
+    self.name = name
+    
+    for k,v in pairs(animal) do 
+        self[k] = v
+    end
+
+    return self
+end
+        
+ function cat:testName(name)
+        self.name = name
+        if (#self.name > 100) then 
+            print("that's a long name!")
+        end
+    end
 local function b() end
-local b = animal.new()
-b:setname("Test")
-print(b:getname())
+local b = cat.new("Thomas")
+print(b:getName())

@@ -4,6 +4,7 @@ var listener = require("./luappListener").luappListener;
 class LPPListener extends listener {
     res = "";
     currentClass = "";
+    abstractClass = "";
     raw = "";
 
     constructor(raw){
@@ -157,9 +158,18 @@ ${className}.__index = ${className}
         `
         this.currentClass = className;
     }
+    
+    enterAbstractclassname(ctx){
+        console.log(ctx.getText())
+        var className = ctx.getText();
+        this.abstractClass = className;
+    }
 
+    exitAbstractclassname(){
+        
+    }
     exitClassbody(){
-
+        this.abstractClass = "";
         this.currentClass = "";
     }
 
@@ -187,11 +197,17 @@ end
         var funcParams = ctx.getChild(2);
         var funcBody = ctx.getChild(4);
         if(funcBody == null) return;
+        console.log(this.abstractClass);
         var newFunc = `
 function ${this.currentClass}.new(${this.getRaw(funcParams.start.start, funcParams.stop.stop+1)})
     local self = {}
     setmetatable(self, ${this.currentClass})
     ${this.getRaw(funcBody.start.start, funcBody.stop.stop+1)}
+    ${this.abstractClass != "" ? `
+    for k,v in pairs(${this.abstractClass}) do 
+        self[k] = v
+    end` : ""}
+
     return self
 end
         `

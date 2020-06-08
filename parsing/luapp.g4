@@ -22,7 +22,7 @@ stat
     | 'for' NAME '=' exp ',' exp (',' exp)? 'do' block 'end'
     | 'for' namelist 'in' explist 'do' block 'end'
     | 'function' funcname funcbody
-    | 'class' classname classbody
+    | 'class' classname ('extends' abstractclassname)? classbody
     | 'local' 'class' classname classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
@@ -42,6 +42,10 @@ funcname
     ;
 
 classname
+    : NAME
+    ;
+
+abstractclassname
     : NAME
     ;
 
