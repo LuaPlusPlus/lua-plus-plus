@@ -1,7 +1,7 @@
 class animal
 
-    function new()
-        this.name = name
+    function new(name)
+        self.name = name
     end
 
     function getname()

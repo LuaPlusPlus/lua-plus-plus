@@ -16,4 +16,4 @@ parser.buildParseTrees = true;
 var tree = parser.chunk();
 const luaPPListener = new LuaPPListener(input);
 antlr4.tree.ParseTreeWalker.DEFAULT.walk(luaPPListener, tree);
-console.log(luaPPListener.res);
+fs.writeFileSync("tests/test.lua",luaPPListener.res );
