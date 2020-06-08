@@ -46,7 +46,7 @@ end
 function cat.new(name)
     local self = {}
     setmetatable(self, cat)
-    self = new animal(name)
+    self = new animal("b")
     
     for k,v in pairs(animal) do 
         self[k] = v
@@ -61,10 +61,7 @@ end
             print("that's a long name!")
         end
     end
+  self = animal.new("b")
 local function b() end
-local z = 5
-
-
-z-= 5
-local b = cat.new("Thomas")
+ local b = cat.new("Thomas")
 print(b:getName())

@@ -20,7 +20,7 @@ class cat extends animal
     name {get set}
 
     constructor(name)
-        self = new animal(name)
+        self = new animal("b")
     end
 
     function testName(name)
@@ -33,9 +33,6 @@ class cat extends animal
 end
 
 local function b() end
-
-local z = 5
-z-= 5
 
 local b = new cat("Thomas")
 print(b:getName())

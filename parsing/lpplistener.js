@@ -32,16 +32,16 @@ class LPPListener extends listener {
     }
     
     handleFuncDef(ctx){
-        //console.log(ctx);
+        ////console.log(ctx);
         var children = ctx.children;
         if(children == null || children.length <= 0) return;
-        //console.log(children);
+        ////console.log(children);
         var name = children[1];
         var body = children[2];
         
         var start = body.start.start;
         var end = body.stop.stop;
-        // console.log("ITEM:" + this.getRaw(start,end))
+        // //console.log("ITEM:" + this.getRaw(start,end))
         if(end == null)return;
         this.res += `\n function ${this.currentClass}:${name.getText()}${this.getRaw(start,end+1)}`
 
@@ -55,7 +55,7 @@ class LPPListener extends listener {
             if(cName === "ClassnameContext" || cName === "ClassbodyContext") return true;
             // if(child[""]
         }
-        //console.log(ctx)
+        ////console.log(ctx)
 
         return false;
     }
@@ -99,12 +99,12 @@ class LPPListener extends listener {
     enterStat(ctx){
         var start = ctx.start.start;
         var end = ctx.stop.stop;
-        if(this.isParentClass(ctx)) return;
-        else if(this.containsClass(ctx)) return;
-        else if(this.isNewClass(ctx)){
+        if(this.isNewClass(ctx)){
             this.newHandler(ctx);
             return;
         }
+        if(this.isParentClass(ctx)) return;
+        else if(this.containsClass(ctx)) return;
         else if(this.isMinusEquals(ctx)){
             this.minusEqualsHandler(ctx);
             return;
@@ -140,7 +140,7 @@ class LPPListener extends listener {
     }
 
     enterFuncname(ctx){
-        // console.log(this.currentClass)
+        // //console.log(this.currentClass)
         // if(this.currentClass != ""){
         //     this.res += `function ${this.currentClass}:${this.getText()}(`
         // }
@@ -157,7 +157,7 @@ ${className}.__index = ${className}
     }
     
     enterAbstractclassname(ctx){
-        console.log(ctx.getText())
+        //console.log(ctx.getText())
         var className = ctx.getText();
         this.abstractClass = className;
     }
@@ -177,9 +177,9 @@ ${className}.__index = ${className}
             var getset = ctx.getChild(i);
             
             if(getset != null && getset.constructor.name == "ClassgetorsetContext"){
-                console.log(getset.getText());
+                //console.log(getset.getText());
                 var isGet = getset.getText() == "get" ;
-                console.log(isGet);
+                //console.log(isGet);
                 var name = nameB.getText();
                 this.res += `
 function ${this.currentClass}:${isGet ? "get" : "set"}${name.charAt(0).toUpperCase() + name.slice(1)}(${isGet ? "" : "obj"})
@@ -191,11 +191,11 @@ end
     }
 
     ClassConstructor(ctx){
-        //console.log(ctx);
+        ////console.log(ctx);
         var funcParams = ctx.getChild(2);
         var funcBody = ctx.getChild(4);
         if(funcBody == null) return;
-        console.log(this.abstractClass);
+        //console.log(this.abstractClass);
         var newFunc = `
 function ${this.currentClass}.new(${this.getRaw(funcParams.start.start, funcParams.stop.stop+1)})
     local self = {}
@@ -213,18 +213,18 @@ end
     }
     
     newHandler(ctx){
-        var name = this.getRawCtx(ctx.getChild(1));
-        var newClassCall = ctx.getChild(3);
+        var isLocal = ctx.getText().startsWith("local")
+        var name = this.getRawCtx(ctx.getChild(isLocal ? 1 : 0));
+        var newClassCall = ctx.getChild(isLocal ? 3 : 2);
         var parmasChild = newClassCall.getChild(2);
-        console.log(newClassCall.getChild(2).constructor.name);
+        //console.log(newClassCall.getChild(2).constructor.name);
         var parmas = parmasChild.constructor.name != "ArgsContext" ? "" : this.getRawCtx(parmasChild);
         var clazzName = this.getRawCtx(newClassCall.getChild(1));
-        
-        this.res += `\nlocal ${name} = ${clazzName}.new${parmas}`;
+        this.res += `\n ${isLocal ? "local" : ""} ${name} = ${clazzName}.new${parmas}`;
     }
 
     minusEqualsHandler(ctx){
-        console.log(ctx);
+        //console.log(ctx);
         var name = this.getRawCtx(ctx.getChild(1));
     }
 }

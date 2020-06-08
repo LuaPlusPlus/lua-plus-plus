@@ -26,7 +26,7 @@ stat
     | 'local' 'class' classname classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
-    | 'local' namelist '=' newclass
+    | ('local')? namelist '=' newclass
     | ('local')? NAME minusEqual
     ;
 
