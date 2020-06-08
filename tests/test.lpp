@@ -20,7 +20,7 @@ class cat extends animal
     name {get set}
 
     constructor(name)
-        self.name = name
+        self = new animal(name)
     end
 
     function testName(name)

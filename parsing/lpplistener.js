@@ -14,22 +14,6 @@ class LPPListener extends listener {
         
         var allFuncs = this.getAllFuncs();
         var myFuncs = this.getRegisteredFuncs();
-        // allFuncs.forEach( (el) => {
-            
-        //     //if(el in myFuncs) console.log(el)
-        //     this[el] = (ctx) => {
-        //           //console.log(ctx);
-        //         var children = ctx.children;
-        //         if(children == null || children.length <= 0) return;
-        //         console.log(children);
-        //         var body = children[1];
-                
-        //         var start = body.start.start;
-        //         var end = body.stop.stop;
-        //         this.res += `\n${this.getRaw(start,end+1)}`
-        //     }
-        //     //console.log(el);
-        // });
     }
     
     getRegisteredFuncs(){
@@ -168,6 +152,7 @@ ${className}.__index = ${className}
     exitAbstractclassname(){
         
     }
+    
     exitClassbody(){
         this.abstractClass = "";
         this.currentClass = "";
@@ -213,7 +198,6 @@ end
         `
         this.res += `\n ${newFunc}`;
     }
-
     
     newHandler(ctx){
         var name = this.getRawCtx(ctx.getChild(1));
