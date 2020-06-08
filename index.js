@@ -1,6 +1,6 @@
 // test.js
 var fs = require("fs");
-
+var luamin = require('luamin');
 var antlr4 = require('antlr4');
 var LuaPPLexer = require('./parsing/luappLexer').luappLexer;
 var LuaPPParser = require('./parsing/luappParser').luappParser;
@@ -16,4 +16,5 @@ parser.buildParseTrees = true;
 var tree = parser.chunk();
 const luaPPListener = new LuaPPListener(input);
 antlr4.tree.ParseTreeWalker.DEFAULT.walk(luaPPListener, tree);
+// luaPPListener.res = luamin.minify(luaPPListener.res);
 fs.writeFileSync("tests/test.lua",luaPPListener.res );

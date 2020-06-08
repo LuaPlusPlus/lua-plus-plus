@@ -176,8 +176,17 @@ classfunction
     : 'function' funcname funcbody
     ;
 
+classgetorset
+    : 'get' | 'set'
+    ;
+
+classgetset
+    : NAME '{' classgetorset+ '}'
+    ;
+
+
 classbody
-    :  classfunction* 'end'
+    :  classgetset*  classfunction* 'end'
     ;
 
 addOne
