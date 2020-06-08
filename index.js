@@ -14,6 +14,6 @@ var tokens = new antlr4.CommonTokenStream(lexer);
 var parser = new LuaPPParser(tokens);
 parser.buildParseTrees = true;
 var tree = parser.chunk();
-const luaPPListener = new LuaPPListener();
+const luaPPListener = new LuaPPListener(input);
 antlr4.tree.ParseTreeWalker.DEFAULT.walk(luaPPListener, tree);
 console.log(luaPPListener.res);

@@ -172,8 +172,12 @@ classdef
     : 'class' NAME classbody
     ;
 
+classfunction
+    : 'function' funcname funcbody
+    ;
+
 classbody
-    :  functiondef* 'end'
+    :  classfunction* 'end'
     ;
 
 addOne
