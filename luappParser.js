@@ -1,4 +1,4 @@
-// Generated from luapp.g4 by ANTLR 4.8
+// Generated from parsing/luapp.g4 by ANTLR 4.8
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 var luappListener = require('./luappListener').luappListener;

@@ -23,6 +23,7 @@ stat
     | 'for' namelist 'in' explist 'do' block 'end'
     | 'function' funcname funcbody
     | 'class' classname classbody
+    | 'local' 'class' classname classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
     ;
@@ -168,7 +169,7 @@ string
 // Plus-Plus Modifications
 
 classdef
-    : 'class' classbody
+    : 'class' NAME classbody
     ;
 
 classbody
