@@ -11,9 +11,12 @@ function animal:setName(obj)
     self.name = obj 
 end
     
- function animal.new(name)
-        self.name = name
-        end
+function animal.new(name)
+    local self = {}
+    setmetatable(self, animal)
+    self.name = name
+    return self
+    end
         
  function animal:testName(name)
         self.name = name

@@ -169,7 +169,10 @@ end
         var funcBody = ctx.getChild(4);
         if(funcBody == null) return;
         var newFunc = `function ${this.currentClass}.new(${this.getRaw(funcParams.start.start, funcParams.stop.stop+1)})
+        local self = {}
+        setmetatable(self, ${this.currentClass})
         ${this.getRaw(funcBody.start.start, funcBody.stop.stop+1)}
+        return self
         end
         `
         this.res += `\n ${newFunc}`;
