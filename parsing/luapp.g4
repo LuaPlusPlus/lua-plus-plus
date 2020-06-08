@@ -26,7 +26,7 @@ stat
     | 'local' 'class' classname classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
-    | ('local')? namelist '=' newclass
+    | 'local' namelist '=' newclass
     ;
 
 retstat
@@ -170,7 +170,7 @@ string
 // Plus-Plus Modifications
 
 newclass
-    : 'new' functioncall
+    : 'new' funcname args
     ;
 
 classdef

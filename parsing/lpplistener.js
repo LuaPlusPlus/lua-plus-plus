@@ -42,7 +42,10 @@ class LPPListener extends listener {
     getRaw(start, stop){
         return this.raw.substring(start,stop)
     }
-
+    getRawCtx(ctx){
+        return this.getRaw(ctx.start.start, ctx.stop.stop+1);
+    }
+    
     handleFuncDef(ctx){
         //console.log(ctx);
         var children = ctx.children;
@@ -88,11 +91,26 @@ class LPPListener extends listener {
         return false
     }
 
+    isNewClass(ctx){
+        for (let i = 0; i < ctx.getChildCount(); i++) {
+            
+            var child = ctx.getChild(i);
+            var cName = child.constructor.name
+            if(cName === "NewclassContext" ) return true;
+            // if(child[""]
+        }
+        return false;
+    }
+
     enterStat(ctx){
         var start = ctx.start.start;
         var end = ctx.stop.stop;
         if(this.isParentClass(ctx)) return;
         if(this.containsClass(ctx)) return;
+        if(this.isNewClass(ctx)){
+            this.newHandler(ctx);
+            return;
+        }
         this.res += `\n${this.getRaw(start,end+1)}`
     }
 
@@ -163,19 +181,33 @@ end
             }
         }
     }
+
     ClassConstructor(ctx){
         //console.log(ctx);
         var funcParams = ctx.getChild(2);
         var funcBody = ctx.getChild(4);
         if(funcBody == null) return;
-        var newFunc = `function ${this.currentClass}.new(${this.getRaw(funcParams.start.start, funcParams.stop.stop+1)})
-        local self = {}
-        setmetatable(self, ${this.currentClass})
-        ${this.getRaw(funcBody.start.start, funcBody.stop.stop+1)}
-        return self
-        end
+        var newFunc = `
+function ${this.currentClass}.new(${this.getRaw(funcParams.start.start, funcParams.stop.stop+1)})
+    local self = {}
+    setmetatable(self, ${this.currentClass})
+    ${this.getRaw(funcBody.start.start, funcBody.stop.stop+1)}
+    return self
+end
         `
         this.res += `\n ${newFunc}`;
+    }
+
+    
+    newHandler(ctx){
+        var name = this.getRawCtx(ctx.getChild(1));
+        var newClassCall = ctx.getChild(3);
+        var parmasChild = newClassCall.getChild(2);
+        console.log(newClassCall.getChild(2).constructor.name);
+        var parmas = parmasChild.constructor.name != "ArgsContext" ? "" : this.getRawCtx(parmasChild);
+        var clazzName = this.getRawCtx(newClassCall.getChild(1));
+        
+        this.res += `\nlocal ${name} = ${clazzName}.new${parmas}`;
     }
 }
 

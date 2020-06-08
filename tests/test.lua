@@ -1,4 +1,8 @@
---Generated with Lua++, Written by NoSharp
+--[[
+    Generated with Lua++, 
+    Language written by NoSharp
+    With contributions from Tom.Bat and Sammy
+]]--
 
 animal = {}
 animal.__index = animal
@@ -11,12 +15,13 @@ function animal:setName(obj)
     self.name = obj 
 end
     
+ 
 function animal.new(name)
     local self = {}
     setmetatable(self, animal)
     self.name = name
     return self
-    end
+end
         
  function animal:testName(name)
         self.name = name
@@ -25,7 +30,6 @@ function animal.new(name)
         end
     end
 local function b() end
-local b = new
-animal()
+local b = animal.new()
 b:setname("Test")
 print(b:getname())

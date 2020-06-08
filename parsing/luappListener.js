@@ -335,6 +335,15 @@ luappListener.prototype.exitString = function(ctx) {
 };
 
 
+// Enter a parse tree produced by luappParser#newclass.
+luappListener.prototype.enterNewclass = function(ctx) {
+};
+
+// Exit a parse tree produced by luappParser#newclass.
+luappListener.prototype.exitNewclass = function(ctx) {
+};
+
+
 // Enter a parse tree produced by luappParser#classdef.
 luappListener.prototype.enterClassdef = function(ctx) {
 };
