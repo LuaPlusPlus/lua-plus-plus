@@ -34,5 +34,8 @@ end
 
 local function b() end
 
+local z = 5
+z-= 5
+
 local b = new cat("Thomas")
 print(b:getName())

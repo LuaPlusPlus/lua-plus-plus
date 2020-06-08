@@ -452,5 +452,14 @@ luappListener.prototype.exitDivEqual = function(ctx) {
 };
 
 
+// Enter a parse tree produced by luappParser#minusEqual.
+luappListener.prototype.enterMinusEqual = function(ctx) {
+};
+
+// Exit a parse tree produced by luappParser#minusEqual.
+luappListener.prototype.exitMinusEqual = function(ctx) {
+};
+
+
 
 exports.luappListener = luappListener;

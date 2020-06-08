@@ -27,6 +27,7 @@ stat
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
     | 'local' namelist '=' newclass
+    | ('local')? NAME minusEqual
     ;
 
 retstat
@@ -210,17 +211,23 @@ addOne
     ;
 
 plusEqual
-    : '+='
+    : NAME '+='
     ;
 
 multiplyEqual
-    : '*='
+    : NAME '*='
     ;
 
 divEqual
-    : '/='
+    : NAME '/='
     ;
 
+minusEqual
+    : NAME '-='
+    ;
+
+// safeOperator
+//     : 
 
 //////////////////////////////////////////
 

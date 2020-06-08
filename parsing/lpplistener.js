@@ -76,24 +76,37 @@ class LPPListener extends listener {
         return false
     }
 
-    isNewClass(ctx){
+    isChildContext(ctx, name){
         for (let i = 0; i < ctx.getChildCount(); i++) {
             
             var child = ctx.getChild(i);
             var cName = child.constructor.name
-            if(cName === "NewclassContext" ) return true;
+            if(cName === name ) return true;
             // if(child[""]
         }
         return false;
+    }
+
+
+    isNewClass(ctx){
+        return this.isChildContext(ctx,"NewclassContext");
+    }
+
+    isMinusEquals(ctx){
+        return this.isChildContext(ctx, "MinusEqualContext")
     }
 
     enterStat(ctx){
         var start = ctx.start.start;
         var end = ctx.stop.stop;
         if(this.isParentClass(ctx)) return;
-        if(this.containsClass(ctx)) return;
-        if(this.isNewClass(ctx)){
+        else if(this.containsClass(ctx)) return;
+        else if(this.isNewClass(ctx)){
             this.newHandler(ctx);
+            return;
+        }
+        else if(this.isMinusEquals(ctx)){
+            this.minusEqualsHandler(ctx);
             return;
         }
         this.res += `\n${this.getRaw(start,end+1)}`
@@ -208,6 +221,11 @@ end
         var clazzName = this.getRawCtx(newClassCall.getChild(1));
         
         this.res += `\nlocal ${name} = ${clazzName}.new${parmas}`;
+    }
+
+    minusEqualsHandler(ctx){
+        console.log(ctx);
+        var name = this.getRawCtx(ctx.getChild(1));
     }
 }
 

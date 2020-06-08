@@ -1,7 +1,7 @@
 --[[
     Generated with Lua++, 
-    Language written by NoSharp
-    With contributions from Tom.Bat and Sammy
+    Language written by NoSharp, Smilton
+    With contributions from Tom.Bat
 ]]--
 
 animal = {}
@@ -46,7 +46,7 @@ end
 function cat.new(name)
     local self = {}
     setmetatable(self, cat)
-    self.name = name
+    self = new animal(name)
     
     for k,v in pairs(animal) do 
         self[k] = v
@@ -62,5 +62,9 @@ end
         end
     end
 local function b() end
+local z = 5
+
+
+z-= 5
 local b = cat.new("Thomas")
 print(b:getName())
