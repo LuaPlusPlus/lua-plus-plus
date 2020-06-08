@@ -17,4 +17,4 @@ var tree = parser.chunk();
 const luaPPListener = new LuaPPListener(input);
 antlr4.tree.ParseTreeWalker.DEFAULT.walk(luaPPListener, tree);
 // luaPPListener.res = luamin.minify(luaPPListener.res);
-fs.writeFileSync("tests/test.lua",luaPPListener.res );
+fs.writeFileSync("tests/test.lua","--Generated with Lua++, Written by NoSharp\n" + luaPPListener.res );

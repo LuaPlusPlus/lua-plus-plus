@@ -371,6 +371,24 @@ luappListener.prototype.exitClassgetset = function(ctx) {
 };
 
 
+// Enter a parse tree produced by luappParser#constructor.
+luappListener.prototype.enterConstructor = function(ctx) {
+};
+
+// Exit a parse tree produced by luappParser#constructor.
+luappListener.prototype.exitConstructor = function(ctx) {
+};
+
+
+// Enter a parse tree produced by luappParser#classmember.
+luappListener.prototype.enterClassmember = function(ctx) {
+};
+
+// Exit a parse tree produced by luappParser#classmember.
+luappListener.prototype.exitClassmember = function(ctx) {
+};
+
+
 // Enter a parse tree produced by luappParser#classbody.
 luappListener.prototype.enterClassbody = function(ctx) {
 };

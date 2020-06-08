@@ -1,20 +1,23 @@
+--Generated with Lua++, Written by NoSharp
 
 animal = {}
 animal.__index = animal
         
-function animal:setname(obj)
+function animal:getName()
+    return self.name 
+end
+    
+function animal:setName(obj)
     self.name = obj 
 end
     
- function animal:new(name)
+ function animal.new(name)
         self.name = name
-    end
- function animal:getname()
-        return self.name
-    end
- function animal:setname(name)
+        end
+        
+ function animal:testName(name)
         self.name = name
-        if(#self.name > 100)then 
+        if (#self.name > 100) then 
             print("that's a long name!")
         end
     end

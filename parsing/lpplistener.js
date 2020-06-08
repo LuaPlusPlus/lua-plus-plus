@@ -76,7 +76,8 @@ class LPPListener extends listener {
         var data = ctx.parentCtx;
         for(var i=1; i < 1000; i++ ){
             if(data.parentCtx != null){
-                if(data.parentCtx.constructor.name === "ClassfunctionContext"){
+                var name = data.parentCtx.constructor.name
+                if(name === "ClassfunctionContext" || name === "ConstructorContext" ){
                     return true;
                 }
                 data = data.parentCtx
@@ -103,13 +104,21 @@ class LPPListener extends listener {
         return ctx.constructor.name === "ClassgetsetContext";
     }
 
+    isClassConstructor(ctx){
+        return ctx.constructor.name === "ConstructorContext";
+    }
+
     enterClassbody(ctx){
-        for (let i = 0; i < ctx.getChildCount(); i++) {
+        for (let i = 0; i < ctx.getChild(0).getChildCount(); i++) {
+            
             var child = ctx.getChild(i);
+            if(child == null) continue;
             if (this.isClassFunc(child)){
                 this.handleFuncDef(child);
             }else if(this.isClassGetSet(child)){
                 this.handleClassgetset(child)
+            }else if(this.isClassConstructor(child)){
+                this.ClassConstructor(child);
             }
         }
     }
@@ -137,20 +146,33 @@ ${className}.__index = ${className}
     }
 
     handleClassgetset(ctx){
-        var name = ctx.getChild(0);
+        var nameB = ctx.getChild(0);
         for (let i = 2; i < ctx.getChildCount(); i++) {
             var getset = ctx.getChild(i);
-            console.log(getset.constructor.name);
+            
             if(getset != null && getset.constructor.name == "ClassgetorsetContext"){
                 console.log(getset.getText());
-                var isGet = getset == "get" ;
+                var isGet = getset.getText() == "get" ;
+                console.log(isGet);
+                var name = nameB.getText();
                 this.res += `
-function ${this.currentClass}:${isGet ? "get" : "set"}${name}(${isGet ? "" : "obj"})
+function ${this.currentClass}:${isGet ? "get" : "set"}${name.charAt(0).toUpperCase() + name.slice(1)}(${isGet ? "" : "obj"})
     ${isGet ? `return self.${name}` : `self.${name} = obj`} 
 end
     `
             }
         }
+    }
+    ClassConstructor(ctx){
+        //console.log(ctx);
+        var funcParams = ctx.getChild(2);
+        var funcBody = ctx.getChild(4);
+        if(funcBody == null) return;
+        var newFunc = `function ${this.currentClass}.new(${this.getRaw(funcParams.start.start, funcParams.stop.stop+1)})
+        ${this.getRaw(funcBody.start.start, funcBody.stop.stop+1)}
+        end
+        `
+        this.res += `\n ${newFunc}`;
     }
 }
 

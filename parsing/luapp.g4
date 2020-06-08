@@ -26,6 +26,7 @@ stat
     | 'local' 'class' classname classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
+    | ('local')? namelist '=' newclass
     ;
 
 retstat
@@ -168,6 +169,10 @@ string
 
 // Plus-Plus Modifications
 
+newclass
+    : 'new' functioncall
+    ;
+
 classdef
     : 'class' NAME classbody
     ;
@@ -184,13 +189,20 @@ classgetset
     : NAME '{' classgetorset+ '}'
     ;
 
+constructor
+    : 'constructor' '(' parlist? ')' block 'end'
+    ;
+
+classmember
+    : classfunction | classgetset | constructor
+    ; 
 
 classbody
-    :  classgetset*  classfunction* 'end'
+    : (classfunction | classgetset | constructor)* 'end'
     ;
 
 addOne
-    : '++'
+    : NAME '++'
     ;
 
 plusEqual
