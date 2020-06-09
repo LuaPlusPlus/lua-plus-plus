@@ -1,6 +1,2 @@
 # Project exclude paths
-/target/
-.idea/*
-/gen/*
-/target/*
-/OLD/*
+.idea/**

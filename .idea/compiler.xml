@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lpp" />
-        <module name="LuaPP" />
+        <module name="lua-plus-plus" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lua-plus-plus" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
