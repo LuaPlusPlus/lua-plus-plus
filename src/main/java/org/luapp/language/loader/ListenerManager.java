@@ -18,7 +18,7 @@ public class ListenerManager {
         Reflections reflections = new Reflections("org.luapp.language.handlers");
         Set<Class<? extends LuaPPListener>> listeners = reflections.getSubTypesOf(LuaPPListener.class);
 
-        listeners.forEach((Class<? extends LuaPPListener> listener)->{
+        for (Class<? extends LuaPPListener> listener : listeners) {
             System.out.println("Registered Listener: " + listener.getCanonicalName());
             try {
                 LuaPPListener listenerInstance = listener.newInstance();
@@ -26,7 +26,7 @@ public class ListenerManager {
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
-        });
+        }
 
     }
 

@@ -11,6 +11,10 @@ public class Main {
 
     public static void main(String[] args){
         String path = System.getProperty("user.dir") + "/src/main/java/org/luapp/language/test.lpp";
+        Main.luaPPInstance = new Luapp(readPath(path), path);
+        Main.luaPPInstance.load();
+    }
+    public static String readPath(String path){
         try {
             File myObj = new File(path);
             Scanner myReader = new Scanner(myObj);
@@ -20,13 +24,13 @@ public class Main {
                 data2.append(data+="\n");
             }
             System.out.println("Converting: \n" + data2.toString());
-            luaPPInstance = new Luapp(data2.toString(), path);
             myReader.close();
+            return data2.toString();
+
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
+        return "";
     }
-
 }

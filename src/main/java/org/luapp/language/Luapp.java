@@ -20,7 +20,7 @@ public class Luapp {
 
     public String currentResult;
     public String raw;
-
+    public String path;
     public String currentClass;
     public String currentAbstract;
 
@@ -31,16 +31,20 @@ public class Luapp {
         this.listenerManager = new ListenerManager();
         this.currentResult = "";
         this.raw = raw;
-        this.listenerManager.Load();
+        this.path = path;
 
+    }
+
+    public void load(){
         try {
-            luappLexer lexer = new luappLexer(new ANTLRFileStream(path));
+            luappLexer lexer = new luappLexer(new ANTLRFileStream(this.path));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             luappParser parser = new luappParser(tokens);
             ParseTree tree = parser.chunk();
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(new MasterLuaPPListener(), tree);
-            String newPath = path.substring(0, path.length()-3) + "lua";
+            this.listenerManager.Load();
+            String newPath = this.path.substring(0, this.path.length()-3) + "lua";
             File newFile = new File(newPath);
             newFile.createNewFile();
             FileWriter writeFile = new FileWriter(newPath);
@@ -48,6 +52,7 @@ public class Luapp {
         }catch(IOException ex){
             ex.printStackTrace();
         }
+
     }
 
     public ListenerManager getListenerManager() {

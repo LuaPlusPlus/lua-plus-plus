@@ -9,7 +9,9 @@ import org.luapp.language.generator.luappListener;
 import org.luapp.language.generator.luappParser;
 
 public class MasterLuaPPListener implements luappListener {
-    public Luapp getLuaPP(){return Main.luaPPInstance;}
+    public Luapp getLuaPP(){
+        return Main.luaPPInstance;
+    }
 
     @Override
     public void enterChunk(luappParser.ChunkContext ctx) {
@@ -33,12 +35,14 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterStat(luappParser.StatContext ctx) {
-        this.getLuaPP().handleEnterContext(ctx);
+        if(Main.luaPPInstance == null){
+            System.out.println("Null instance!");
+        }//.handleEnterContext(ctx);
     }
 
     @Override
     public void exitStat(luappParser.StatContext ctx) {
-        this.getLuaPP().handleExitContext(ctx);
+        //this.getLuaPP().handleExitContext(ctx);
     }
 
     @Override

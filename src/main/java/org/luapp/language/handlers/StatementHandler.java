@@ -13,11 +13,11 @@ public class StatementHandler extends LuaPPListener {
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
 
-//        this.addToLuaPPResult(this.getLuaPP().getRawFromContext(enterContext));
+        this.addToLuaPPResult(this.getLuaPP().getRawFromContext(enterContext));
     }
 
     @Override
     public void onExitContext(ParserRuleContext exitContext) {
-//        this.addToLuaPPResult(this.getLuaPP().getRawFromContext(exitContext));
+        this.addToLuaPPResult(this.getLuaPP().getRawFromContext(exitContext));
     }
 }
