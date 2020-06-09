@@ -37,13 +37,14 @@ public class Luapp {
 
     public void load(){
         try {
+            this.listenerManager.Load();
             luappLexer lexer = new luappLexer(new ANTLRFileStream(this.path));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             luappParser parser = new luappParser(tokens);
             ParseTree tree = parser.chunk();
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(new MasterLuaPPListener(), tree);
-            this.listenerManager.Load();
+
             String newPath = this.path.substring(0, this.path.length()-3) + "lua";
             File newFile = new File(newPath);
             newFile.createNewFile();
@@ -73,6 +74,7 @@ public class Luapp {
 
     public void handleEnterContext(ParserRuleContext context){
         this.listenerManager.listeners.forEach((LuaPPListener listener)->{
+
             listener.handleEnterContext(context);
         });
     }
