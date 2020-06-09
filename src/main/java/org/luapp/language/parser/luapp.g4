@@ -137,13 +137,13 @@ fieldsep
     : ',' | ';'
     ;
 
-operatorOr 
+operatorOr
 	: 'or';
 
-operatorAnd 
+operatorAnd
 	: 'and';
 
-operatorComparison 
+operatorComparison
 	: '<' | '>' | '<=' | '>=' | '~=' | '==';
 
 operatorStrcat
@@ -200,7 +200,7 @@ constructor
 
 classmember
     : classfunction | classgetset | constructor
-    ; 
+    ;
 
 classbody
     : (classfunction | classgetset | constructor)* 'end'
@@ -227,7 +227,7 @@ minusEqual
     ;
 
 // safeOperator
-//     : 
+//     :
 
 //////////////////////////////////////////
 
@@ -238,7 +238,7 @@ NAME
     ;
 
 NORMALSTRING
-    : '"' ( EscapeSequence | ~('\\'|'"') )* '"' 
+    : '"' ( EscapeSequence | ~('\\'|'"') )* '"'
     ;
 
 CHARSTRING
@@ -293,14 +293,14 @@ EscapeSequence
     | HexEscape
     | UtfEscape
     ;
-    
+
 fragment
 DecimalEscape
     : '\\' Digit
     | '\\' Digit Digit
     | '\\' [0-2] Digit Digit
     ;
-    
+
 fragment
 HexEscape
     : '\\' 'x' HexDigit HexDigit
@@ -320,7 +320,7 @@ HexDigit
 COMMENT
     : '--[' NESTED_STR ']' -> channel(HIDDEN)
     ;
-    
+
 LINE_COMMENT
     : '--'
     (                                               // --
@@ -330,8 +330,8 @@ LINE_COMMENT
     ) ('\r\n'|'\r'|'\n'|EOF)
     -> channel(HIDDEN)
     ;
-    
-WS  
+
+WS
     : [ \t\u000C\r\n]+ -> skip
     ;
 SHEBANG
