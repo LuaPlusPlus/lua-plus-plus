@@ -1,4 +1,4 @@
-package org.luapp.language.Listeners;
+package org.luapp.language.listeners;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
