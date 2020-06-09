@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args){
         String path = System.getProperty("user.dir") + "/src/main/java/org/luapp/language/test.lpp";
-        Main.luaPPInstance = new Luapp(readPath(path), path);
+        Main.luaPPInstance = new Luapp(path);
         Main.luaPPInstance.load();
     }
     public static String readPath(String path){

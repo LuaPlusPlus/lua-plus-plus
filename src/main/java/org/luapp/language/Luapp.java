@@ -1,9 +1,11 @@
 package org.luapp.language;
 
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.Interval;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.antlr.v4.runtime.tree.TerminalNode;
 import org.luapp.language.generator.luappLexer;
 import org.luapp.language.generator.luappParser;
 import org.luapp.language.listeners.LuaPPListener;
@@ -25,12 +27,12 @@ public class Luapp {
     public String currentAbstract;
 
     /**
-     * @param raw The actual code.
+     *
+     * @param path The path to the file.
      */
-    public Luapp(String raw, String path){
+    public Luapp(String path){
         this.listenerManager = new ListenerManager();
         this.currentResult = "";
-        this.raw = raw;
         this.path = path;
 
     }
@@ -90,7 +92,11 @@ public class Luapp {
     }
 
     public String getRawFromContext(ParserRuleContext context){
-        return this.raw.substring(context.start.getStartIndex(), context.stop.getStopIndex() +1);
+        Token startToken = context.start;
+        Token stopToken = context.stop;
+
+        CharStream cs = context.start.getTokenSource().getInputStream();
+        return cs.getText(new Interval(startToken.getStartIndex(), stopToken.getStopIndex()));
     }
 
     public void appendToResult(String target){
