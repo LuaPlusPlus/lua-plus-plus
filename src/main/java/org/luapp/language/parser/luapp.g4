@@ -23,7 +23,7 @@ stat
     | 'for' namelist 'in' explist 'do' block 'end'
     | 'function' funcname funcbody
     | 'class' classname ('extends' abstractclassname)? classbody
-    | 'local' 'class' classname classbody
+    | 'local' 'class' classname ('extends' abstractclassname)? classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
     | ('local')? namelist '=' newclass
