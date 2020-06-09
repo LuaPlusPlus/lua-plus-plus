@@ -26,6 +26,7 @@ public class ListenerManager {
             System.out.println("Registered Listener: " + listener.getCanonicalName());
             try {
                 LuaPPListener listenerInstance = listener.newInstance();
+                listenerInstance.listenerManager = this;
                 this.Register(listenerInstance);
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();

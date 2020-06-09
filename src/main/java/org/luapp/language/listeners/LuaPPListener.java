@@ -4,15 +4,22 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.luapp.language.Luapp;
 import org.luapp.language.Main;
 import org.luapp.language.generator.luappParser;
+import org.luapp.language.loader.ListenerManager;
 import org.luapp.language.loader.ListenerType;
 
 public abstract class LuaPPListener {
 
     // The Target Event/Context.
-    public final int target;
+    public int target;
 
-    public LuaPPListener(int type){
-        this.target = type;
+    public ListenerManager listenerManager;
+
+    public void setTarget(int target) {
+        this.target = target;
+    }
+
+    public int getTarget() {
+        return target;
     }
 
     public boolean isCorrectContext(ParserRuleContext context){
