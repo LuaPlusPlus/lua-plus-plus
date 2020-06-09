@@ -7,12 +7,16 @@ import org.luapp.language.listeners.LuaPPListener;
 public class StatementHandler extends LuaPPListener {
 
     public StatementHandler() {
-        super(luappParser.RULE_stat);
+        this.setTarget(luappParser.RULE_stat);
     }
 
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
-
+        for (Class<? extends ParserRuleContext> ignoredStatement : this.listenerManager.ignoredStatements) {
+            if(enterContext.getClass().isInstance(ignoredStatement)){
+                return;
+            }
+        }
         this.addToLuaPPResult(this.getLuaPP().getRawFromContext(enterContext));
     }
 
