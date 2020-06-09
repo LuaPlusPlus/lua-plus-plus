@@ -1,6 +1,8 @@
 package org.luapp.language.loader;
 
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.luapp.language.generator.luappListener;
+import org.luapp.language.generator.luappParser;
 import org.luapp.language.listeners.LuaPPListener;
 import org.reflections.Reflections;
 
@@ -12,6 +14,8 @@ import java.util.Set;
 public class ListenerManager {
 
     public List<LuaPPListener> listeners = new ArrayList();
+
+    public List<Class<? extends ParserRuleContext>> ignoredStatements = new ArrayList();
 
     public void Load(){
 
@@ -28,6 +32,10 @@ public class ListenerManager {
             }
         }
 
+    }
+
+    public void RegisterIgnoredContext(Class<?extends ParserRuleContext> ignoredClass){
+        this.ignoredStatements.add(ignoredClass);
     }
 
     public void Register(LuaPPListener listener){
