@@ -18,6 +18,7 @@ public class ConstructorHandler extends LuaPPListener {
 
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
+
         luappParser.ConstructorContext constructorContext = (luappParser.ConstructorContext)enterContext;
         ParseTree funcParams = constructorContext.getChild(2);
         ParseTree funcBody = constructorContext.getChild(4);
@@ -25,20 +26,20 @@ public class ConstructorHandler extends LuaPPListener {
             System.out.println("Function Body or Function Parameters are null");
             return;
         }
-
         String params = this.getLuaPP().getRawFromContext((ParserRuleContext)funcParams);
         String body = this.getLuaPP().getRawFromContext((ParserRuleContext) funcBody);
 
         String abstractClass = this.getLuaPP().currentAbstract == null ? "" : this.getLuaPP().currentAbstract;
         String currentClass = this.getLuaPP().currentClass == null ? "" : this.getLuaPP().currentClass;
-
+        System.out.println("Got here?");
         this.addToLuaPPResult("function " + currentClass + ":new(" + params + ")\n " +
-                "local self = {}\n" +
-                "setmetatable(self, " + currentClass +")" +
+                "\tlocal self = {}\n" +
+                "\tsetmetatable(self, " + currentClass +")" +
                 "\n" + (abstractClass.isEmpty() ? "" : ("for k,v in pairs(" + abstractClass + ") do \n" +
                 "        self[k] = v\n" +
-                "    end " +
-                "end")));
+                "    end ")) +
+                "\n\t" + body +
+                "\n\treturn self\nend");
 
     }
 

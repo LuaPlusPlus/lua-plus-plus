@@ -15,8 +15,21 @@ public class StatementHandler extends LuaPPListener {
     }
 
     public boolean isParentClass(ParserRuleContext context){
-        return context.getParent().getRuleIndex() == luappParser.RULE_classbody;
+        ParseTree parent = context.parent;
+        for(int i =0; i < 1000000; i++){ // This is because I KNOW someone's gonna have some weird edge cases.
+            ParserRuleContext prc = (ParserRuleContext)parent;
+            if(prc == null) return false;
+            if(prc.parent == null) return false;
+            if(prc.getParent().getRuleIndex() == luappParser.RULE_classbody) {
+                return true;
+            }
+            parent = prc.parent;
+        }
+
+        return false;
     }
+
+
 
     public boolean isChildIgnored(ParserRuleContext context){
 
@@ -49,13 +62,20 @@ public class StatementHandler extends LuaPPListener {
             }
         }
 
+        if(enterContext.parent instanceof luappParser.ClassbodyContext){
+            System.out.println("Parent is class ignoring");
+            return;
+        }
+
         if(this.isParentClass(enterContext)) {
             System.out.println("Parent is the class!");
             return;
         }
+
         if(this.isChildIgnored(enterContext)){
             return;
         }
+
         //System.out.println("NewLine:" + this.getLuaPP().getRawFromContext(enterContext));
         this.addToLuaPPResult(this.getLuaPP().getRawFromContext(enterContext));
     }
