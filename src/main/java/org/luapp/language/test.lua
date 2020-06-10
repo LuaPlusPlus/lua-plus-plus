@@ -15,15 +15,4 @@ end
 function cat:isCat()
         return true
     end
-self.name = name
-class cat extends animal
-    constructor(name)
-        self.name = name
-    end
-
-    function isCat()
-        return true
-    end
-end
-print("hello world?")
 print("hello world?")
