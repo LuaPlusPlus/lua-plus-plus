@@ -44,16 +44,17 @@ public class StatementHandler extends LuaPPListener {
 
         for (ParseTree child : enterContext.children) {
             if(child instanceof luappParser.ClassbodyContext){
-                this
+                this.listenerManager.GetInstangeByTarget(luappParser.RULE_classbody).handleEnterContext(enterContext);
+                return;
             }
         }
 
         if(this.isParentClass(enterContext)) {
             System.out.println("Parent is the class!");
-            //return;
+            return;
         }
         if(this.isChildIgnored(enterContext)){
-            //return;
+            return;
         }
         //System.out.println("NewLine:" + this.getLuaPP().getRawFromContext(enterContext));
         this.addToLuaPPResult(this.getLuaPP().getRawFromContext(enterContext));
