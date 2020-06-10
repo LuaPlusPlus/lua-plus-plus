@@ -1,4 +1,4 @@
-// Generated from C:/Users/Harry/Desktop/Lua/lpp/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
+// Generated from C:/Users/Harry/Desktop/Lua/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
 package org.luapp.language.generator;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -611,6 +611,18 @@ public class luappBaseListener implements luappListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMinusEqual(luappParser.MinusEqualContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSafeOperator(luappParser.SafeOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSafeOperator(luappParser.SafeOperatorContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

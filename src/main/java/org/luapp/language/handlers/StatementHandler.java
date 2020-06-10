@@ -35,14 +35,11 @@ public class StatementHandler extends LuaPPListener {
 
 
     public boolean isChildIgnored(ParserRuleContext context){
+        if (context.children == null) return false;
 
         for (ParseTree child : context.children) {
             if(child instanceof TerminalNodeImpl) continue;
             ParserRuleContext childParser = ((ParserRuleContext)child);
-
-            if(childParser.getRuleIndex() == 44){
-                System.out.println("This is a FUCKING CLAS?");
-            }
 
             for (int ignoredStatement : this.listenerManager.ignoredStatements) {
 
@@ -55,6 +52,8 @@ public class StatementHandler extends LuaPPListener {
         return false;
     }
 
+
+
     /**
      * This will handle all default geneartion.
      * @param enterContext The actual context.
@@ -62,22 +61,35 @@ public class StatementHandler extends LuaPPListener {
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
 
-        for (ParseTree child : enterContext.children) {
-            if(child instanceof luappParser.ClassbodyContext){
-                this.listenerManager.GetInstangeByTarget(luappParser.RULE_classbody).handleEnterContext(enterContext);
-                return;
+        boolean removeSafeIndex = false;
+
+        if (enterContext.children != null) {
+            for (ParseTree child : enterContext.children) {
+                if(child instanceof TerminalNodeImpl) continue;
+                if(((ParserRuleContext)child).getRuleIndex() == luappParser.RULE_safeOperator){
+                    this.listenerManager
+                            .GetInstangeByTarget(luappParser.RULE_safeOperator)
+                            .handleEnterContext(enterContext);
+                }
+
+                if (child instanceof luappParser.ClassbodyContext) {
+                    this.listenerManager
+                            .GetInstangeByTarget(luappParser.RULE_classbody)
+                            .handleEnterContext(enterContext);
+                    return;
+                }
             }
-
         }
 
-        if(enterContext.parent instanceof luappParser.ClassbodyContext){
-            System.out.println("Parent is class ignoring");
-            return;
-        }
+
 
         if(this.isParentClass(enterContext)) {
             System.out.println("Parent is a class!");
             return;
+        }
+
+        if(enterContext instanceof luappParser.SafeOperatorContext){
+            System.out.println("It's a Safe Op.");
         }
 
         if(this.isChildIgnored(enterContext)){
@@ -85,7 +97,10 @@ public class StatementHandler extends LuaPPListener {
         }
 
         //System.out.println("NewLine:" + this.getLuaPP().getRawFromContext(enterContext));
+
+
         this.addToLuaPPResult(this.getLuaPP().getRawFromContext(enterContext));
+
     }
 
     @Override

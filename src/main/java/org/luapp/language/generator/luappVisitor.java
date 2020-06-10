@@ -1,4 +1,4 @@
-// Generated from C:/Users/Harry/Desktop/Lua/lpp/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
+// Generated from C:/Users/Harry/Desktop/Lua/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
 package org.luapp.language.generator;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -310,4 +310,10 @@ public interface luappVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMinusEqual(luappParser.MinusEqualContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link luappParser#safeOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSafeOperator(luappParser.SafeOperatorContext ctx);
 }

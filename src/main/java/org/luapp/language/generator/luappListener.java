@@ -1,4 +1,4 @@
-// Generated from C:/Users/Harry/Desktop/Lua/lpp/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
+// Generated from C:/Users/Harry/Desktop/Lua/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
 package org.luapp.language.generator;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -507,4 +507,14 @@ public interface luappListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMinusEqual(luappParser.MinusEqualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link luappParser#safeOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterSafeOperator(luappParser.SafeOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link luappParser#safeOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitSafeOperator(luappParser.SafeOperatorContext ctx);
 }

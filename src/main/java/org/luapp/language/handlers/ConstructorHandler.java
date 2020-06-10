@@ -34,7 +34,7 @@ public class ConstructorHandler extends LuaPPListener {
         this.addToLuaPPResult("function " + currentClass + ":new(" + params + ")\n" +
                 "\tlocal self = {}\n" +
                 "\tsetmetatable(self, " + currentClass +")" +
-                "\n" + (abstractClass.isEmpty() ? "" : ("\nfor k,v in pairs(" + abstractClass + ") do \n" +
+                "\n" + (abstractClass.isEmpty() ? "" : ("\n\tfor k,v in pairs(" + abstractClass + ") do \n" +
                 "        self[k] = v\n" +
                 "    end ")) +
                 "\n\t" + body +
