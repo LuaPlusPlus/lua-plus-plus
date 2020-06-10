@@ -35,14 +35,12 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterStat(luappParser.StatContext ctx) {
-        if(Main.luaPPInstance == null){
-            System.out.println("Null instance!");
-        }//.handleEnterContext(ctx);
+        Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
     public void exitStat(luappParser.StatContext ctx) {
-        //this.getLuaPP().handleExitContext(ctx);
+        Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
@@ -76,22 +74,22 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterClassname(luappParser.ClassnameContext ctx) {
-
+        Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
     public void exitClassname(luappParser.ClassnameContext ctx) {
-
+        Main.luaPPInstance.handleExitContext(ctx);
     }
 
     @Override
     public void enterAbstractclassname(luappParser.AbstractclassnameContext ctx) {
-
+        Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
     public void exitAbstractclassname(luappParser.AbstractclassnameContext ctx) {
-
+        Main.luaPPInstance.handleExitContext(ctx);
     }
 
     @Override
@@ -206,12 +204,12 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterFunctiondef(luappParser.FunctiondefContext ctx) {
-
+        //Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
     public void exitFunctiondef(luappParser.FunctiondefContext ctx) {
-
+        //Main.luaPPInstance.handleExitContext(ctx);
     }
 
     @Override
@@ -436,12 +434,12 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterConstructor(luappParser.ConstructorContext ctx) {
-
+        //Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
     public void exitConstructor(luappParser.ConstructorContext ctx) {
-
+        //Main.luaPPInstance.handleExitContext(ctx);
     }
 
     @Override
@@ -456,12 +454,12 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterClassbody(luappParser.ClassbodyContext ctx) {
-
+        Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
     public void exitClassbody(luappParser.ClassbodyContext ctx) {
-
+//        Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
