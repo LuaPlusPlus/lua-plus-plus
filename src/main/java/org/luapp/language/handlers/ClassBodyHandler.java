@@ -10,6 +10,19 @@ public class ClassBodyHandler extends LuaPPListener {
         this.setTarget(luappParser.RULE_classbody);
     }
 
+    public boolean isClassFunction(ParserRuleContext context){
+        return context.getRuleIndex() == luappParser.RULE_classfunction;
+    }
+
+    public boolean isClassGetSet(ParserRuleContext context){
+        return context.getRuleIndex() == luappParser.RULE_classgetset;
+    }
+
+    public boolean isClassConstructor(ParserRuleContext context){
+        return context.getRuleIndex() == luappParser.RULE_constructor;
+    }
+
+
     @Override
     public void onSetManager() {
 
