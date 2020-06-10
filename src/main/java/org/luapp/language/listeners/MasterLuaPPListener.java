@@ -40,7 +40,7 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void exitStat(luappParser.StatContext ctx) {
-        Main.luaPPInstance.handleEnterContext(ctx);
+        Main.luaPPInstance.handleExitContext(ctx);
     }
 
     @Override

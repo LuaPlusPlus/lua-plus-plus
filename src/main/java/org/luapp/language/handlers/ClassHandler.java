@@ -17,11 +17,16 @@ public class ClassHandler extends LuaPPListener {
 
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
+//        StackTraceElement[] cause = Thread.currentThread().getStackTrace();
+//        System.out.println(cause[2]);
+        System.out.println("Classname: " + enterContext.getText());
         this.getLuaPP().currentClass = enterContext.getText();
+        String currentClass = enterContext.getText();
+        this.addToLuaPPResult(currentClass +  " = {}\n" + currentClass + ".__index = " + currentClass);
     }
 
     @Override
     public void onExitContext(ParserRuleContext exitContext) {
-        this.getLuaPP().currentClass = "";
+
     }
 }

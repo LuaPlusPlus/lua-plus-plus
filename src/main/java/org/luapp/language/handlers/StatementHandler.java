@@ -29,6 +29,9 @@ public class StatementHandler extends LuaPPListener {
         return false;
     }
 
+    public boolean isClassName(ParseTree context){
+        return ((ParserRuleContext)context).getRuleIndex() == luappParser.RULE_classname;
+    }
 
 
     public boolean isChildIgnored(ParserRuleContext context){
@@ -52,6 +55,10 @@ public class StatementHandler extends LuaPPListener {
         return false;
     }
 
+    /**
+     * This will handle all default geneartion.
+     * @param enterContext The actual context.
+     */
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
 
@@ -60,6 +67,7 @@ public class StatementHandler extends LuaPPListener {
                 this.listenerManager.GetInstangeByTarget(luappParser.RULE_classbody).handleEnterContext(enterContext);
                 return;
             }
+
         }
 
         if(enterContext.parent instanceof luappParser.ClassbodyContext){
@@ -68,7 +76,7 @@ public class StatementHandler extends LuaPPListener {
         }
 
         if(this.isParentClass(enterContext)) {
-            System.out.println("Parent is the class!");
+            System.out.println("Parent is a class!");
             return;
         }
 

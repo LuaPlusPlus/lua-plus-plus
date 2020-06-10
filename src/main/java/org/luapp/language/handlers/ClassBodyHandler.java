@@ -23,7 +23,9 @@ public class ClassBodyHandler extends LuaPPListener {
     public boolean isClassConstructor(ParseTree context){
         return ((ParserRuleContext)context).getRuleIndex() == luappParser.RULE_constructor;
     }
-
+    public boolean isClassName(ParseTree context){
+        return ((ParserRuleContext)context).getRuleIndex() == luappParser.RULE_classname;
+    }
 
     @Override
     public void onSetManager() {
@@ -41,14 +43,20 @@ public class ClassBodyHandler extends LuaPPListener {
         for (ParseTree child : enterContext.children) {
             if(child instanceof TerminalNodeImpl) continue;
             if(isClassFunction(child)){
-                System.out.println("Class function");
+                this.listenerManager
+                        .GetInstangeByTarget(luappParser.RULE_classfunction)
+                        .handleEnterContext((ParserRuleContext)child);
             }else if(isClassConstructor(child)){
                 System.out.println("Constructor!");
                 this.listenerManager
                         .GetInstangeByTarget(luappParser.RULE_constructor)
                         .handleEnterContext((ParserRuleContext)child);
             }else if(isClassGetSet(child)){
-                System.out.println("Get/Set");
+                this.listenerManager
+                        .GetInstangeByTarget(luappParser.RULE_classfunction)
+                        .handleEnterContext((ParserRuleContext)child);
+            }else if(isClassName(child)){
+
             }
         }
 
@@ -56,6 +64,6 @@ public class ClassBodyHandler extends LuaPPListener {
 
     @Override
     public void onExitContext(ParserRuleContext exitContext) {
-
+        this.getLuaPP().currentClass = "";
     }
 }

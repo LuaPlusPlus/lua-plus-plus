@@ -39,7 +39,7 @@ public abstract class LuaPPListener {
     }
 
     public void handleExitContext(ParserRuleContext context){
-        if (isCorrectContext(context)) onEnterContext(context);
+        if (isCorrectContext(context)) onExitContext(context);
     }
 
     public Luapp getLuaPP(){
@@ -47,6 +47,7 @@ public abstract class LuaPPListener {
     }
 
     public void addToLuaPPResult(String result){
+
         this.getLuaPP().currentResult += "\n" + result;
     }
 

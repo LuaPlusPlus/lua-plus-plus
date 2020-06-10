@@ -1,5 +1,11 @@
-class animal
+class cat extends animal
     constructor(name)
         self.name = name
     end
+
+    function isCat()
+        return true
+    end
 end
+
+print("hello world?")

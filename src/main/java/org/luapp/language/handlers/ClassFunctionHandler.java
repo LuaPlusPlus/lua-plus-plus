@@ -1,6 +1,7 @@
 package org.luapp.language.handlers;
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.luapp.language.generator.luappParser;
 import org.luapp.language.listeners.LuaPPListener;
 
@@ -17,7 +18,11 @@ public class ClassFunctionHandler extends LuaPPListener {
 
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
-
+        ParseTree name = enterContext.getChild(1);
+        ParseTree body = enterContext.getChild(2);
+        System.out.println(name);
+        this.addToLuaPPResult("function " + this.getLuaPP().currentClass
+            + ":" + name.getText() + this.getLuaPP().getRawFromContext((ParserRuleContext)body));
     }
 
     @Override
