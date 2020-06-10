@@ -31,7 +31,7 @@ public class Luapp {
      * @param path The path to the file.
      */
     public Luapp(String path){
-        this.listenerManager = new ListenerManager();
+
         this.currentResult = "";
         this.path = path;
 
@@ -39,6 +39,7 @@ public class Luapp {
 
     public void load(){
         try {
+            this.listenerManager = new ListenerManager();
             this.listenerManager.Load();
             luappLexer lexer = new luappLexer(new ANTLRFileStream(this.path));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -51,7 +52,8 @@ public class Luapp {
             File newFile = new File(newPath);
             newFile.createNewFile();
             FileWriter writeFile = new FileWriter(newPath);
-            writeFile.write(this.currentResult);
+            writeFile.write("--[[\nWritten by nosharp (https://nosharp.cc),\ntom.bat (tomdotbat.dev),\nsammy milton (smilton.dev)\n]]--" + this.currentResult);
+            writeFile.close();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -94,7 +96,6 @@ public class Luapp {
     public String getRawFromContext(ParserRuleContext context){
         Token startToken = context.start;
         Token stopToken = context.stop;
-
         CharStream cs = context.start.getTokenSource().getInputStream();
         return cs.getText(new Interval(startToken.getStartIndex(), stopToken.getStopIndex()));
     }
