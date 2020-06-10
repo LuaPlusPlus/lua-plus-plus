@@ -89,7 +89,7 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void exitAbstractclassname(luappParser.AbstractclassnameContext ctx) {
-        Main.luaPPInstance.handleExitContext(ctx);
+        //Main.luaPPInstance.handleExitContext(ctx);
     }
 
     @Override
