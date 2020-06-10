@@ -424,12 +424,12 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterClassgetset(luappParser.ClassgetsetContext ctx) {
-
+        Main.luaPPInstance.handleEnterContext(ctx);
     }
 
     @Override
     public void exitClassgetset(luappParser.ClassgetsetContext ctx) {
-
+        Main.luaPPInstance.handleExitContext(ctx);
     }
 
     @Override
