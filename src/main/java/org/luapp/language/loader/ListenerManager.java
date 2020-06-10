@@ -13,9 +13,9 @@ import java.util.Set;
 
 public class ListenerManager {
 
-    public List<LuaPPListener> listeners = new ArrayList();
+    public List<LuaPPListener> listeners = new ArrayList<LuaPPListener>();
 
-    public List<Class<? extends ParserRuleContext>> ignoredStatements = new ArrayList();
+    public List<Integer> ignoredStatements = new ArrayList<Integer>();
 
     public void Load(){
 
@@ -26,7 +26,7 @@ public class ListenerManager {
             System.out.println("Registered Listener: " + listener.getCanonicalName());
             try {
                 LuaPPListener listenerInstance = listener.newInstance();
-                listenerInstance.listenerManager = this;
+                listenerInstance.setListenerManager(this);
                 this.Register(listenerInstance);
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
@@ -35,8 +35,21 @@ public class ListenerManager {
 
     }
 
-    public void RegisterIgnoredContext(Class<?extends ParserRuleContext> ignoredClass){
+    public void RegisterIgnoredContext(int ignoredClass){
         this.ignoredStatements.add(ignoredClass);
+    }
+
+    /**
+     * Get's a Listener instance from it's target ID.
+     * @param target The rule ID
+     * @return Listener
+     */
+    public LuaPPListener GetInstangeByTarget(int target){
+        return listeners
+                .stream()
+                .filter((listener)-> listener.target == target)
+                .findFirst()
+                .orElse(null);
     }
 
     public void Register(LuaPPListener listener){
