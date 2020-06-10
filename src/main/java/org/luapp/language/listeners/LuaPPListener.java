@@ -3,15 +3,13 @@ package org.luapp.language.listeners;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.luapp.language.Luapp;
 import org.luapp.language.Main;
-import org.luapp.language.generator.luappParser;
 import org.luapp.language.loader.ListenerManager;
-import org.luapp.language.loader.ListenerType;
 
 public abstract class LuaPPListener {
 
     // The Target Event/Context.
     public int target;
-
+    public boolean ignoreCheck = false;
     public ListenerManager listenerManager;
 
     public void setListenerManager(ListenerManager listenerManager) {
@@ -34,11 +32,12 @@ public abstract class LuaPPListener {
     }
 
     public void handleEnterContext(ParserRuleContext context){
-
+        if (this.ignoreCheck) {onEnterContext(context);return;}
         if (isCorrectContext(context)) onEnterContext(context);
     }
 
     public void handleExitContext(ParserRuleContext context){
+        if (this.ignoreCheck) {onExitContext(context); return;}
         if (isCorrectContext(context)) onExitContext(context);
     }
 

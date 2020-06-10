@@ -26,6 +26,7 @@ stat
     | 'local' 'class' classname ('extends' abstractclassname)? classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
+    | 'safe' safeOperator
     | ('local')? namelist '=' newclass
     | ('local')? NAME minusEqual
     ;
@@ -226,9 +227,9 @@ minusEqual
     : NAME '-='
     ;
 
-// safeOperator
-//     :
-
+safeOperator
+    : var
+    ;
 //////////////////////////////////////////
 
 // LEXER

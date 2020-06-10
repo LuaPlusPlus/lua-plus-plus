@@ -513,6 +513,16 @@ public class MasterLuaPPListener implements luappListener {
     }
 
     @Override
+    public void enterSafeOperator(luappParser.SafeOperatorContext ctx) {
+
+    }
+
+    @Override
+    public void exitSafeOperator(luappParser.SafeOperatorContext ctx) {
+
+    }
+
+    @Override
     public void visitTerminal(TerminalNode terminalNode) {
 
     }

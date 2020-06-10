@@ -1,4 +1,7 @@
 class cat extends animal
+
+    name {get set}
+
     constructor(name)
         self.name = name
     end
@@ -10,5 +13,4 @@ end
 
 print("hello world?")
 
-local b = new cat("param")
-local b = cat:new("param")
+safe tom.dot.bat
