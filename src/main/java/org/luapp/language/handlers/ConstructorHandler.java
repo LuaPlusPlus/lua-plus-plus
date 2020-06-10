@@ -31,11 +31,10 @@ public class ConstructorHandler extends LuaPPListener {
 
         String abstractClass = this.getLuaPP().currentAbstract == null ? "" : this.getLuaPP().currentAbstract;
         String currentClass = this.getLuaPP().currentClass == null ? "" : this.getLuaPP().currentClass;
-        System.out.println("Got here?");
-        this.addToLuaPPResult("function " + currentClass + ":new(" + params + ")\n " +
+        this.addToLuaPPResult("function " + currentClass + ":new(" + params + ")\n" +
                 "\tlocal self = {}\n" +
                 "\tsetmetatable(self, " + currentClass +")" +
-                "\n" + (abstractClass.isEmpty() ? "" : ("for k,v in pairs(" + abstractClass + ") do \n" +
+                "\n" + (abstractClass.isEmpty() ? "" : ("\nfor k,v in pairs(" + abstractClass + ") do \n" +
                 "        self[k] = v\n" +
                 "    end ")) +
                 "\n\t" + body +

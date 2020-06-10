@@ -1,6 +1,8 @@
 package org.luapp.language.handlers;
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.luapp.language.generator.luappParser;
 import org.luapp.language.listeners.LuaPPListener;
 
@@ -17,6 +19,29 @@ public class ClassGetSetHandler extends LuaPPListener {
 
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
+        luappParser.ClassgetsetContext ctx = (luappParser.ClassgetsetContext)enterContext;
+
+        ParseTree name = ctx.getChild(0);
+        String nameText = name.getText();
+
+        for (int i=2; i < ctx.getChildCount(); i++) {
+            ParseTree getset = ctx.getChild(i);
+            if(getset == null){
+                return;
+            }
+            if(getset instanceof TerminalNodeImpl) continue;
+            if(((ParserRuleContext)getset).getRuleIndex() == luappParser.RULE_classgetorset){
+                String getSet = getset.getText();
+                if(getSet.equals("get")){
+                    this.addToLuaPPResult("function " + this.getLuaPP().currentClass + ":get_" + nameText + "()" +
+                            "\n\treturn self." + nameText + "\nend" );
+                }else if(getSet.equals("set")){
+                    this.addToLuaPPResult("function " + this.getLuaPP().currentClass + ":set_" + nameText + "(obj)" +
+                            "\n\tself." + nameText +  " = obj\nend" );
+                }
+            }
+        }
+
 
     }
 

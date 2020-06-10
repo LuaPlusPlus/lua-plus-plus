@@ -77,8 +77,6 @@ public class Luapp {
     }
 
     public void handleEnterContext(ParserRuleContext context){
-        StackTraceElement[] cause = Thread.currentThread().getStackTrace();
-        System.out.println(cause[2]);
         this.listenerManager.listeners.forEach((LuaPPListener listener)->{
 
             listener.handleEnterContext(context);

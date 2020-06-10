@@ -6,9 +6,12 @@ samuel milton (smilton.dev)
 cat = {}
 cat.__index = cat
 function cat:new(name)
- 	local self = {}
+	local self = {}
 	setmetatable(self, cat)
 
+for k,v in pairs(animal) do 
+        self[k] = v
+    end 
 	self.name = name
 	return self
 end

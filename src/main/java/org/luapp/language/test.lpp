@@ -9,3 +9,6 @@ class cat extends animal
 end
 
 print("hello world?")
+
+local b = new cat("param")
+local b = cat:new("param")

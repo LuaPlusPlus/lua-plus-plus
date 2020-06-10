@@ -65,5 +65,6 @@ public class ClassBodyHandler extends LuaPPListener {
     @Override
     public void onExitContext(ParserRuleContext exitContext) {
         this.getLuaPP().currentClass = "";
+        this.getLuaPP().currentAbstract = "";
     }
 }
