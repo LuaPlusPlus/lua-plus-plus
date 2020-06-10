@@ -4,10 +4,15 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.luapp.language.generator.luappParser;
 import org.luapp.language.listeners.LuaPPListener;
 
-public class ClassHandler  extends LuaPPListener {
+public class ClassHandler extends LuaPPListener {
 
     public ClassHandler() {
         this.setTarget(luappParser.RULE_classname);
+    }
+
+    @Override
+    public void onSetManager() {
+        this.listenerManager.RegisterIgnoredContext(this.getTarget());
     }
 
     @Override
