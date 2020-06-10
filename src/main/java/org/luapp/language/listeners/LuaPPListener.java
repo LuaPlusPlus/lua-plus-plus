@@ -14,6 +14,13 @@ public abstract class LuaPPListener {
 
     public ListenerManager listenerManager;
 
+    public void setListenerManager(ListenerManager listenerManager) {
+        this.listenerManager = listenerManager;
+        this.onSetManager();
+    }
+
+    public void onSetManager(){}
+
     public void setTarget(int target) {
         this.target = target;
     }
@@ -27,6 +34,7 @@ public abstract class LuaPPListener {
     }
 
     public void handleEnterContext(ParserRuleContext context){
+
         if (isCorrectContext(context)) onEnterContext(context);
     }
 
@@ -39,7 +47,7 @@ public abstract class LuaPPListener {
     }
 
     public void addToLuaPPResult(String result){
-        this.getLuaPP().currentResult += result;
+        this.getLuaPP().currentResult += "\n" + result;
     }
 
     /**
