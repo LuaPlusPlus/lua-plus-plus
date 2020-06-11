@@ -408,6 +408,16 @@ public interface luappListener extends ParseTreeListener {
 	 */
 	void exitClassfunction(luappParser.ClassfunctionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link luappParser#classstaticfunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassstaticfunction(luappParser.ClassstaticfunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link luappParser#classstaticfunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassstaticfunction(luappParser.ClassstaticfunctionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link luappParser#classgetorset}.
 	 * @param ctx the parse tree
 	 */

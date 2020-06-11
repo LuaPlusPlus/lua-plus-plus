@@ -297,6 +297,13 @@ public class luappBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitClassstaticfunction(luappParser.ClassstaticfunctionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitClassgetorset(luappParser.ClassgetorsetContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

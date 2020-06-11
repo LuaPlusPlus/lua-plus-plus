@@ -18,10 +18,22 @@ end
 function cat:isCat()
         return true
     end
-function cat:get_name()
+function cat.testing()
+       return "test13"
+    end
+function cat:getName()
 	return self.name
 end
-function cat:set_name(obj)
+function cat:setName(obj)
 	self.name = obj
+end
+function cat:getAge()
+	return self.age
+end
+function cat:setAge(obj)
+	self.age = obj
+end
+function cat:getType()
+	return self.type
 end
 print("hello world?")

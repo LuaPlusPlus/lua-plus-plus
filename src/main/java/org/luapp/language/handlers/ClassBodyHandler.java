@@ -23,8 +23,13 @@ public class ClassBodyHandler extends LuaPPListener {
     public boolean isClassConstructor(ParseTree context){
         return ((ParserRuleContext)context).getRuleIndex() == luappParser.RULE_constructor;
     }
+
     public boolean isClassName(ParseTree context){
         return ((ParserRuleContext)context).getRuleIndex() == luappParser.RULE_classname;
+    }
+
+    public boolean isStaticFunction(ParseTree context){
+        return ((ParserRuleContext)context).getRuleIndex() == luappParser.RULE_classstaticfunction;
     }
 
     @Override
@@ -55,6 +60,10 @@ public class ClassBodyHandler extends LuaPPListener {
                         .handleEnterContext((ParserRuleContext)child);
             }else if(isClassName(child)){
 
+            }else if(isStaticFunction(child)){
+                this.listenerManager
+                        .GetInstangeByTarget(luappParser.RULE_classstaticfunction)
+                        .handleEnterContext((ParserRuleContext)child);
             }
         }
 

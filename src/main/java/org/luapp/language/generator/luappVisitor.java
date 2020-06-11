@@ -251,6 +251,12 @@ public interface luappVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClassfunction(luappParser.ClassfunctionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link luappParser#classstaticfunction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassstaticfunction(luappParser.ClassstaticfunctionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link luappParser#classgetorset}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
