@@ -34,8 +34,6 @@ public class ClassBodyHandler extends LuaPPListener {
 
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
-        System.out.println("Being called?" + enterContext.getRuleIndex());
-
         if(this.getLuaPP().currentClass.isEmpty()) {
             System.out.println("No class name, not completing body.");
             return;

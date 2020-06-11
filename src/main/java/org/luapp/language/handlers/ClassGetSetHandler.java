@@ -32,11 +32,12 @@ public class ClassGetSetHandler extends LuaPPListener {
             if(getset instanceof TerminalNodeImpl) continue;
             if(((ParserRuleContext)getset).getRuleIndex() == luappParser.RULE_classgetorset){
                 String getSet = getset.getText();
+                String camelCaseName = nameText.substring(0, 1).toUpperCase() + nameText.substring(1);
                 if(getSet.equals("get")){
-                    this.addToLuaPPResult("function " + this.getLuaPP().currentClass + ":get_" + nameText + "()" +
+                    this.addToLuaPPResult("function " + this.getLuaPP().currentClass + ":get" + camelCaseName + "()" +
                             "\n\treturn self." + nameText + "\nend" );
                 }else if(getSet.equals("set")){
-                    this.addToLuaPPResult("function " + this.getLuaPP().currentClass + ":set_" + nameText + "(obj)" +
+                    this.addToLuaPPResult("function " + this.getLuaPP().currentClass + ":set" + camelCaseName + "(obj)" +
                             "\n\tself." + nameText +  " = obj\nend" );
                 }
             }

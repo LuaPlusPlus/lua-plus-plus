@@ -20,7 +20,6 @@ public class ClassFunctionHandler extends LuaPPListener {
     public void onEnterContext(ParserRuleContext enterContext) {
         ParseTree name = enterContext.getChild(1);
         ParseTree body = enterContext.getChild(2);
-        System.out.println(name);
         this.addToLuaPPResult("function " + this.getLuaPP().currentClass
             + ":" + name.getText() + this.getLuaPP().getRawFromContext((ParserRuleContext)body));
     }

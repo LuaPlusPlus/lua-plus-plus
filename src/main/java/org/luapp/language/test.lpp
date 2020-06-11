@@ -1,6 +1,8 @@
 class cat extends animal
 
     name {get set}
+    age  {get set}
+    type {get }
 
     constructor(name)
         self.name = name

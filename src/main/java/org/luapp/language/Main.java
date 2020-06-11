@@ -8,9 +8,10 @@ public class Main {
 
     public static Luapp luaPPInstance;
 
+    public static String output = "";
 
     public static void main(String[] args){
-        String path = args[0];//System.getProperty("user.dir") + "/src/main/java/org/luapp/language/test.lpp";
+        String path = args[0];
         Main.luaPPInstance = new Luapp(path);
         Main.luaPPInstance.load();
     }
