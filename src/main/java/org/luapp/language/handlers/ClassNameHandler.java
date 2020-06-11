@@ -19,7 +19,7 @@ public class ClassNameHandler extends LuaPPListener {
     public void onEnterContext(ParserRuleContext enterContext) {
 //        StackTraceElement[] cause = Thread.currentThread().getStackTrace();
 //        System.out.println(cause[2]);
-        System.out.println("Classname: " + enterContext.getText());
+        System.out.println("");
         this.getLuaPP().currentClass = enterContext.getText();
         String currentClass = enterContext.getText();
         this.addToLuaPPResult(currentClass +  " = {}\n" + currentClass + ".__index = " + currentClass);

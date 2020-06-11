@@ -187,6 +187,10 @@ classfunction
     : 'function' funcname funcbody
     ;
 
+classstaticfunction
+    : 'static' 'function' funcname funcbody
+    ;
+
 classgetorset
     : 'get' | 'set'
     ;
@@ -204,7 +208,7 @@ classmember
     ;
 
 classbody
-    : (classfunction | classgetset | constructor)* 'end'
+    : ( classstaticfunction | classfunction | classgetset | constructor)* 'end'
     ;
 
 addOne

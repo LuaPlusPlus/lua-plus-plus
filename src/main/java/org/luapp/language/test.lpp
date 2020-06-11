@@ -11,8 +11,10 @@ class cat extends animal
     function isCat()
         return true
     end
+
+    static function testing()
+       return "test13"
+    end
 end
 
 print("hello world?")
-
-safe tom.dot.bat

@@ -496,6 +496,18 @@ public class luappBaseListener implements luappListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterClassstaticfunction(luappParser.ClassstaticfunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitClassstaticfunction(luappParser.ClassstaticfunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterClassgetorset(luappParser.ClassgetorsetContext ctx) { }
 	/**
 	 * {@inheritDoc}
