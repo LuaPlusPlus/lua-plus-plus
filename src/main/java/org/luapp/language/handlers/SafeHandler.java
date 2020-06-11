@@ -21,7 +21,6 @@ public class SafeHandler extends LuaPPListener {
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
         //luappParser.SafeOperatorContext safeOperatorContext = (luappParser.SafeOperatorContext)enterContext;
-        System.out.println("here?");
         StringBuilder stat = new StringBuilder("if ");
         String name = "";
         boolean first = false;
