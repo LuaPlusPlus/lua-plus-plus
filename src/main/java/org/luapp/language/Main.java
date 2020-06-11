@@ -11,7 +11,7 @@ public class Main {
     public static String output = "";
 
     public static void main(String[] args){
-        String path = "C:\\Users\\Harry\\Desktop\\Lua\\lua-plus-plus\\src\\main\\java\\org\\luapp\\language\\test.lpp";//args[0];
+        String path = args[0];
         Main.luaPPInstance = new Luapp(path);
         Main.luaPPInstance.load();
     }
