@@ -1,6 +1,6 @@
-**LPP Code:** 
+**LPP Code:** <link>
 <br>**LPP version:** x.x.x
-<br>**Lua Code:**
+<br>**Lua Code:** <link>
 
 **Describe the bug:**
 
