@@ -1,8 +1,24 @@
-concommand.Add('test.lpp', function()
-        local thomas = cat.new("Thomas!")
-        thomas:setAge(50)
-        thomas:setName("Thomas v2")
-        print(thomas:isCat()) -- outputs -> true
-        print(thomas:getName()) -- outputs -> "Thomas v2"
-        print(thomas:getAge()) -- outputs -> 50
-end)
+class cat
+    name {get set}
+    age  {get set}
+    type {get }
+
+    constructor(name)
+        self.name = name
+    end
+
+    function isCat()
+        return true
+    end
+
+    static function coolCat()
+        return "coolCat!"
+    end
+end
+
+local thomas = cat.new("Thomas")
+thomas:setNge(50)
+thomas:setName("Thomas v2")
+print(thomas:isCat()) -- outputs -> true
+print(thomas:getName()) -- outputs -> "Thomas v2"
+print(thomas:getAge()) -- outputs -> 50

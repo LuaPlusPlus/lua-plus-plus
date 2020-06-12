@@ -10,7 +10,7 @@ public class Main {
 
     public static String output = "";
 
-    public static boolean debug = true;
+    public static boolean debug = false;
 
     public static void main(String[] args){
         String path = debug ? System.getProperty("user.dir") + "/src/main/java/org/luapp/language/test.lpp" : args[0];
