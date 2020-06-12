@@ -1,7 +1,8 @@
 --[[
-Written by nosharp (https://nosharp.cc),
-tom.bat (tomdotbat.dev),
-samuel milton (smilton.dev)
+Written with Lua++.
+Don't remove this notice please
+
+https://github.com/LuaPlusPlus/lua-plus-plus
 ]]--
 cat = {}
 cat.__index = cat
@@ -37,3 +38,4 @@ function cat:getType()
 	return self.type
 end
 print("hello world?")
+if 1==1 then print("helloworld2") end

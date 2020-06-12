@@ -20,7 +20,8 @@ public class StatementHandler extends LuaPPListener {
             ParserRuleContext prc = (ParserRuleContext)parent;
             if(prc == null) return false;
             if(prc.parent == null) return false;
-            if(prc.getParent().getRuleIndex() == luappParser.RULE_classbody) {
+            if(prc.getParent().getRuleIndex() == luappParser.RULE_classbody
+                || prc.getParent().getRuleIndex() == luappParser.RULE_block) {
                 return true;
             }
             parent = prc.parent;

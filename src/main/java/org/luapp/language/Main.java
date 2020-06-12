@@ -10,8 +10,10 @@ public class Main {
 
     public static String output = "";
 
+    public static boolean debug = true;
+
     public static void main(String[] args){
-        String path = args[0];
+        String path = debug ? System.getProperty("user.dir") + "/src/main/java/org/luapp/language/test.lpp" : args[0];
         Main.luaPPInstance = new Luapp(path);
         Main.luaPPInstance.load();
     }
