@@ -27,7 +27,6 @@ stat
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
     | 'safe' safeOperator
-    | ('local')? namelist '=' newclass
     | ('local')? NAME minusEqual
     ;
 
@@ -175,9 +174,6 @@ string
 
 // Plus-Plus Modifications
 
-newclass
-    : 'new' funcname args
-    ;
 
 classdef
     : 'class' NAME classbody

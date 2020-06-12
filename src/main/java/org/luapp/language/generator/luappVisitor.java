@@ -233,12 +233,6 @@ public interface luappVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitString(luappParser.StringContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link luappParser#newclass}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNewclass(luappParser.NewclassContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link luappParser#classdef}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

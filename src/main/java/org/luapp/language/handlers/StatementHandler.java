@@ -81,20 +81,9 @@ public class StatementHandler extends LuaPPListener {
                             .handleEnterContext(enterContext);
                     return;
                 }
-                if(((ParserRuleContext) child).getRuleIndex() == luappParser.RULE_newclass){
-                    System.out.println("Done?");
-                    isNewStatement = true;
-
-                }
             }
         }
-        if(isNewStatement){
 
-            this.listenerManager
-                    .GetInstangeByTarget(luappParser.RULE_newclass)
-                    .handleEnterContext(enterContext);
-            return;
-        }
         if(this.isParentClass(enterContext)) {
             //System.out.println("Parent is a class!");
             return;

@@ -26,6 +26,8 @@ public class Luapp {
     public String currentClass;
     public String currentAbstract;
 
+    public CommonTokenStream commonTokenStream;
+
     /**
      *
      * @param path The path to the file.
@@ -42,8 +44,8 @@ public class Luapp {
             this.listenerManager = new ListenerManager();
             this.listenerManager.Load();
             luappLexer lexer = new luappLexer(new ANTLRFileStream(this.path));
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-            luappParser parser = new luappParser(tokens);
+            this.commonTokenStream = new CommonTokenStream(lexer);
+            luappParser parser = new luappParser(this.commonTokenStream);
             ParseTree tree = parser.chunk();
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(new MasterLuaPPListener(), tree);
@@ -96,10 +98,9 @@ public class Luapp {
     }
 
     public String getRawFromContext(ParserRuleContext context){
-        Token startToken = context.start;
-        Token stopToken = context.stop;
-        CharStream cs = context.start.getTokenSource().getInputStream();
-        return cs.getText(new Interval(startToken.getStartIndex(), stopToken.getStopIndex()));
+        int startToken = context.start.getStartIndex();
+        int stopToken = context.stop.getStartIndex();
+        return context.getStart().getInputStream().getText(new Interval(startToken, stopToken));
     }
 
     public void appendToResult(String target){
