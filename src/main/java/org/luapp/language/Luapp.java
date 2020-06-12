@@ -52,7 +52,9 @@ public class Luapp {
             File newFile = new File(newPath);
             newFile.createNewFile();
             FileWriter writeFile = new FileWriter(newPath);
-            writeFile.write("--[[\nWritten by nosharp (https://nosharp.cc),\ntom.bat (tomdotbat.dev),\nsamuel milton (smilton.dev)\n]]--" + this.currentResult);
+            writeFile.write("--[[\nWritten with Lua++.\n" +
+                    "Don't remove this notice please\n" +
+                    "\nhttps://github.com/LuaPlusPlus/lua-plus-plus\n]]--" + this.currentResult);
             writeFile.close();
         }catch(IOException ex){
             ex.printStackTrace();

@@ -64,6 +64,8 @@ public class StatementHandler extends LuaPPListener {
 
         boolean removeSafeIndex = false;
 
+
+        boolean isNewStatement = false;
         if (enterContext.children != null) {
             for (ParseTree child : enterContext.children) {
                 if(child instanceof TerminalNodeImpl) continue;
@@ -79,13 +81,22 @@ public class StatementHandler extends LuaPPListener {
                             .handleEnterContext(enterContext);
                     return;
                 }
+                if(((ParserRuleContext) child).getRuleIndex() == luappParser.RULE_newclass){
+                    System.out.println("Done?");
+                    isNewStatement = true;
+
+                }
             }
         }
+        if(isNewStatement){
 
-
-
+            this.listenerManager
+                    .GetInstangeByTarget(luappParser.RULE_newclass)
+                    .handleEnterContext(enterContext);
+            return;
+        }
         if(this.isParentClass(enterContext)) {
-            System.out.println("Parent is a class!");
+            //System.out.println("Parent is a class!");
             return;
         }
 
@@ -96,6 +107,7 @@ public class StatementHandler extends LuaPPListener {
         if(this.isChildIgnored(enterContext)){
             return;
         }
+
 
         //System.out.println("NewLine:" + this.getLuaPP().getRawFromContext(enterContext));
 

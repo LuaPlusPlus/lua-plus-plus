@@ -1,21 +1,13 @@
-class cat extends animal
+class ogl_suits.abilityMeta
 
     name {get set}
-    age  {get set}
-    type {get }
 
     constructor(name)
-        self.name = name
+       self.name = name
     end
 
-    function isCat()
-        return true
+    function addHook(hookName, func)
+        hook.Add(hookName, hookName .. "suits_ability", func)
     end
 
-    static function testing()
-       return "test13"
-    end
 end
-
-print("hello world?")
-if 1==1 then print("helloworld2") end

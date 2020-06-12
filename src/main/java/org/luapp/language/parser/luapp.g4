@@ -23,7 +23,7 @@ stat
     | 'for' namelist 'in' explist 'do' block 'end'
     | 'function' funcname funcbody
     | 'class' classname ('extends' abstractclassname)? classbody
-    | 'local' 'class' classname ('extends' abstractclassname)? classbody
+    | ('local')? 'class' classname ('extends' abstractclassname)? classbody
     | 'local' 'function' NAME funcbody
     | 'local' namelist ('=' explist)?
     | 'safe' safeOperator
@@ -44,11 +44,11 @@ funcname
     ;
 
 classname
-    : NAME
+    : var
     ;
 
 abstractclassname
-    : NAME
+    : var
     ;
 
 varlist
