@@ -17,8 +17,6 @@ public class ClassNameHandler extends LuaPPListener {
 
     @Override
     public void onEnterContext(ParserRuleContext enterContext) {
-//        StackTraceElement[] cause = Thread.currentThread().getStackTrace();
-//        System.out.println(cause[2]);
         System.out.println("");
         this.getLuaPP().currentClass = enterContext.getText();
         String currentClass = enterContext.getText();

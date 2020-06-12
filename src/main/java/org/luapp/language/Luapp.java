@@ -99,7 +99,7 @@ public class Luapp {
 
     public String getRawFromContext(ParserRuleContext context){
         int startToken = context.start.getStartIndex();
-        int stopToken = context.stop.getStartIndex();
+        int stopToken = context.stop.getStopIndex();
         return context.getStart().getInputStream().getText(new Interval(startToken, stopToken));
     }
 
