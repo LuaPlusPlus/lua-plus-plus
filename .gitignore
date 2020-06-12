@@ -1,3 +1,4 @@
 .idea/**/**
 .idea/modules.xml
 target/**
+.idea/vcs.xml
