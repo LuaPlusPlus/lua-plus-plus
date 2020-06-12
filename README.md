@@ -1,3 +1,5 @@
-# lua-plus-plus
-Here's a super cool discord server dedicated to L++ https://discord.gg/wTKbSMT<br>
-The documentation can either be found on my website https://nosharp.cc/luapp.html or on the wiki on here.
+# Lua++
+Join the [Lua++ Discord](https://discord.gg/wTKbSM)<br>
+The documentation can either be found on the [wiki](https://github.com/LuaPlusPlus/lua-plus-plus/wiki)
+
+**Current version: 1.0.2**
