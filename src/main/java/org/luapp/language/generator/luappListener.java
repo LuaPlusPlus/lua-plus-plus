@@ -1,4 +1,4 @@
-// Generated from C:/Users/Harry/Desktop/Lua/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
+// Generated from C:/Users/Harry/Desktop/Lua/lpp2electricboogaloo/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
 package org.luapp.language.generator;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -377,16 +377,6 @@ public interface luappListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitString(luappParser.StringContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link luappParser#newclass}.
-	 * @param ctx the parse tree
-	 */
-	void enterNewclass(luappParser.NewclassContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link luappParser#newclass}.
-	 * @param ctx the parse tree
-	 */
-	void exitNewclass(luappParser.NewclassContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link luappParser#classdef}.
 	 * @param ctx the parse tree

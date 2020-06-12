@@ -9,7 +9,7 @@ public class SafeHandler extends LuaPPListener {
 
     public SafeHandler() {
         this.setTarget(luappParser.RULE_safeOperator);
-        this.ignoreCheck = true;
+        //this.ignoreCheck = true;
     }
 
     @Override

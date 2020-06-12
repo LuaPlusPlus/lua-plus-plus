@@ -1,4 +1,4 @@
-// Generated from C:/Users/Harry/Desktop/Lua/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
+// Generated from C:/Users/Harry/Desktop/Lua/lpp2electricboogaloo/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
 package org.luapp.language.generator;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -270,13 +270,6 @@ public class luappBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements 
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitString(luappParser.StringContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitNewclass(luappParser.NewclassContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

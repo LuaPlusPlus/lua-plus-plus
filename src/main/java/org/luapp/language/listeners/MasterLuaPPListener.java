@@ -25,12 +25,10 @@ public class MasterLuaPPListener implements luappListener {
 
     @Override
     public void enterBlock(luappParser.BlockContext ctx) {
-
     }
 
     @Override
     public void exitBlock(luappParser.BlockContext ctx) {
-
     }
 
     @Override
@@ -382,15 +380,6 @@ public class MasterLuaPPListener implements luappListener {
 
     }
 
-    @Override
-    public void enterNewclass(luappParser.NewclassContext ctx) {
-
-    }
-
-    @Override
-    public void exitNewclass(luappParser.NewclassContext ctx) {
-
-    }
 
     @Override
     public void enterClassdef(luappParser.ClassdefContext ctx) {

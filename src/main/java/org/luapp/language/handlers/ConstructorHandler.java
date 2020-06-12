@@ -31,7 +31,7 @@ public class ConstructorHandler extends LuaPPListener {
 
         String abstractClass = this.getLuaPP().currentAbstract == null ? "" : this.getLuaPP().currentAbstract;
         String currentClass = this.getLuaPP().currentClass == null ? "" : this.getLuaPP().currentClass;
-        this.addToLuaPPResult("function " + currentClass + ":new(" + params + ")\n" +
+        this.addToLuaPPResult("function " + currentClass + ".new(" + params + ")\n" +
                 "\tlocal self = {}\n" +
                 "\tsetmetatable(self, " + currentClass +")" +
                 "\n" + (abstractClass.isEmpty() ? "" : ("\n\tfor k,v in pairs(" + abstractClass + ") do \n" +

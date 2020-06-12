@@ -1,4 +1,4 @@
-// Generated from C:/Users/Harry/Desktop/Lua/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
+// Generated from C:/Users/Harry/Desktop/Lua/lpp2electricboogaloo/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
 package org.luapp.language.generator;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -455,18 +455,6 @@ public class luappBaseListener implements luappListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitString(luappParser.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNewclass(luappParser.NewclassContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNewclass(luappParser.NewclassContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

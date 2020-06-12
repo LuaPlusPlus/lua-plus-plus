@@ -1,4 +1,4 @@
-// Generated from C:/Users/Harry/Desktop/Lua/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
+// Generated from C:/Users/Harry/Desktop/Lua/lpp2electricboogaloo/lua-plus-plus/src/main/java/org/luapp/language/parser\luapp.g4 by ANTLR 4.8
 package org.luapp.language.generator;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -232,12 +232,6 @@ public interface luappVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitString(luappParser.StringContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link luappParser#newclass}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNewclass(luappParser.NewclassContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link luappParser#classdef}.
 	 * @param ctx the parse tree
